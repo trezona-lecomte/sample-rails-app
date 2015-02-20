@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
   
   def create
-    @user = User.new(params[:user])   # Not the final implementation
+    @user = User.new(user_params[:user])   # Not the final implementation
     if @user.save
       # Handle successful save.
     else
@@ -13,8 +17,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 
 end
