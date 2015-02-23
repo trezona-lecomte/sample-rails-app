@@ -13,5 +13,8 @@ class User < ActiveRecord::Base
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+    # This method is necessary in order to ensure that we can perform a 
+    # successful comparison of a password in test to the password digest held
+    # by a session. 
   end
 end
