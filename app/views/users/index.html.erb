@@ -4,12 +4,11 @@
 <%= will_paginate %>
 
 <ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 50 %>
-      <%= link_to user.name, user %>
-    </li>
-  <% end %>
+    <!-- Rails can detect a collection of Users and renders each: -->
+    <%= render @users %>  
+    <!-- Rails will automatically call a partial for each object, 
+    using the name of the class of the object ("_user.html.erb" in 
+    this case -->
 </ul>
 
 <%= will_paginate %>
