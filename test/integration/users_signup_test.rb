@@ -26,7 +26,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                password_confirmation: "password" }
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
-    user = assigns(:user)
+    user = assigns(:user)   # assigns lets us access a controller's instance variable in a test
     assert_not user.activated?
     # Try to log in before activation:
     log_in_as(user)
