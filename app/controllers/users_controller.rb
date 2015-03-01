@@ -56,15 +56,6 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
-    # Confirms that a user is logged in.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
     # Confirms that the logged in user is correct.
     def correct_user
       @user = User.find(params[:id])
